@@ -9,20 +9,19 @@ import Face5Icon from '@mui/icons-material/Face5';
 
 export default function MediaCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 365 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="contemplative-reptile.jpg"
-        title="green iguana"
+        image="profile1.png"
+        title="Jeff Bobley"
       />
       <CardContent>
-        <Face5Icon sx={{ fontSize: 100 }} />
+        <Face5Icon />
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Jeff Bobley
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Very strong swimmer. 
         </Typography>
       </CardContent>
       <CardActions>
