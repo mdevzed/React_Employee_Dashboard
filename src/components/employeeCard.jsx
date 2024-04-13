@@ -16,7 +16,7 @@ export default function MediaCard() {
       <Box sx={{alignItems: "center"}}>
         <CardMedia
         sx={{ height: 240, width: 240, backgroundSize: 'contain'}}
-        image="profile1.png"
+        image="/React_Employee_Dashboard/profile5.png"
         title="Jeff Bobley"
         />
       </Box>
