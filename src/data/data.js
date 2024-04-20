@@ -43,9 +43,9 @@ const data = [{
   {
     "image": "profile4.png",
     "id": "E1005",
-    "firstName": "Emily",
+    "firstName": "Emile",
     "lastName": "Green",
-    "email": "emily.green@example.com",
+    "email": "emile.green@example.com",
     "department": "Human Resources",
     "position": "HR Manager",
     "employmentType": "Full-Time",

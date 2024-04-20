@@ -9,36 +9,50 @@ import Face5Icon from '@mui/icons-material/Face5';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import data from '../data/data';
 
-export default function MediaCard() {
-  return (
-    <Card sx={{ maxWidth: 365, px: 2, margin:'auto'}}>
-      <Box sx={{alignItems: "center"}}>
-        <CardMedia
-        sx={{ height: 240, width: 240, backgroundSize: 'contain'}}
-        image="/React_Employee_Dashboard/profile5.png"
-        title="Jeff Bobley"
-        />
-      </Box>
+export default function MediaCard({employee_data}) {
+  return (gi
+    <>
+    {data.map((item,index) => (
+        <Card sx={{ maxWidth: 365, px: 2, margin:'10px'}}>
+          <Box sx = {{justifyContent: "center", alignItems: "center", margin: 'auto'}}>
+            <CardMedia
+            sx={{ height: 240, width: 240, backgroundSize: 'contain', marginTop: '10px', justifyContent: "center", alignItems: "center" }}
+            image={`/React_Employee_Dashboard/${item.image}`}
+            title={item.firstName + ' ' + item.lastName}
 
-      <CardContent sx={{}}>
-        <Face5Icon />
-        <Typography gutterBottom variant="h5" component="div">
-          Jeff Bobley
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Department: Product Design
-        </Typography>
-        <Stack direction="row" spacing={1} my={1}>
-          <Chip label="Manager" variant="outlined" sx={{fontSize: '.75rem'}}/>
-          <Chip label="Figma" variant="outlined" sx={{fontSize: '.75rem'}} />
-          <Chip label="JavaScript" variant="outlined" sx={{fontSize: '.75rem'}} />
-        </Stack>
-        <Stack direction="row" spacing={1} my={1} justifyContent="center">
-          <Chip label="NY" variant="outlined" sx={{fontSize: '.75rem'}}/>
-          <Chip label="Full-Time" variant="outlined" sx={{fontSize: '.75rem'}} />
-        </Stack>
-      </CardContent>
-    </Card>
+            />
+          </Box>
+          <CardContent sx={{}}>
+            <Face5Icon />
+            <Typography gutterBottom variant="h5" component="div">
+              {item.firstName} {item.lastName}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {item.department}
+            </Typography>
+            <Stack 
+              direction="row" spacing={1} my={1}
+              sx={{
+                my: 2, justifyContent: "center", alignItems: "center", flexWrap: "wrap"
+              }}>
+              {item.skills.map((skill, skillIndex) => (
+                <Chip key = {skillIndex} label={skill} my={1}
+                  variant="outlined" sx={{my: '2', fontSize: '.75rem'}}/>
+              ))}
+            </Stack>
+            <Stack direction="row" spacing={1} my={1} justifyContent="center">
+              <Chip label={item.onLeave ? "Inactive": "Active"} 
+                variant={item.onLeave ? "" : "outlined"}
+                sx={{fontSize: '.75rem'}}/>
+              <Chip label={`Hours: ${item.hoursLoggedThisWeek}`} 
+                variant="outlined" 
+                sx={{fontSize: '.75rem'}}/>
+            </Stack>
+          </CardContent>
+        </Card>
+    ))}
+    </>   
   );
 }

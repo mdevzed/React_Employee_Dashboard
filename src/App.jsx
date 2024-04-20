@@ -4,12 +4,16 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import MediaCard from './components/employeeCard';
 import Container from '@mui/material/Container';
+import Data from './data/data.js'
+import { Button } from '@mui/material';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [onLeave, setLeave] = useState(true);
+  console.log(onLeave)
   return (
     <Container fixed>
-      <MediaCard/> 
+      <Button variant = "contained"> On Leave </Button>
+      <MediaCard employee_data = {Data} />
     </Container>
   )
 }
