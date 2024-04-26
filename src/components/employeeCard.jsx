@@ -12,10 +12,10 @@ import Stack from '@mui/material/Stack';
 import data from '../data/data';
 
 export default function MediaCard({employee_data}) {
-  return (gi
+  return (
     <>
     {data.map((item,index) => (
-        <Card sx={{ maxWidth: 365, px: 2, margin:'10px'}}>
+        <Card sx={{ maxWidth: 365, px: 2, margin:'auto', justifyContent: "center"}}>
           <Box sx = {{justifyContent: "center", alignItems: "center", margin: 'auto'}}>
             <CardMedia
             sx={{ height: 240, width: 240, backgroundSize: 'contain', marginTop: '10px', justifyContent: "center", alignItems: "center" }}
@@ -34,8 +34,9 @@ export default function MediaCard({employee_data}) {
             </Typography>
             <Stack 
               direction="row" spacing={1} my={1}
+              justifyContent= "center" alignItems= "center"
               sx={{
-                my: 2, justifyContent: "center", alignItems: "center", flexWrap: "wrap"
+                my: 2, flexWrap: "wrap"
               }}>
               {item.skills.map((skill, skillIndex) => (
                 <Chip key = {skillIndex} label={skill} my={1}
