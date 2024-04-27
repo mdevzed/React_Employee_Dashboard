@@ -1,19 +1,31 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import MediaCard from './components/employeeCard';
-import Container from '@mui/material/Container';
 import Data from './data/data.js'
-import { Button } from '@mui/material';
+import {Switch, Button, Box, Stack, Typography, Container} from '@mui/material';
+
 
 function App() {
-  const [onLeave, setLeave] = useState(true);
-  console.log(onLeave)
+  const [showOnLeave, setShowOnLeave] = useState(false);
+  console.log(showOnLeave);
+  const filteredData = showOnLeave ? Data.filter(employee => employee.onLeave) : Data;
+
+  const toggleOnLeave = (event) => {showOnLeave ? setShowOnLeave(false) : setShowOnLeave(true)};
+
   return (
     <Container fixed>
-      <Button variant = "contained"> On Leave </Button>
-      <MediaCard employee_data = {Data} />
+      <Box>
+        <Typography component="h1" variant="h4" gutterBottom>
+          Employee Dashboard
+        </Typography>
+      </Box>
+      <Stack direction="row" spacing={1} alignItems="center">
+        <Typography>On Leave Employees</Typography>
+        <Switch defaultChecked onClick={toggleOnLeave} />
+        <Typography>All Employees</Typography>
+      </Stack>
+      <MediaCard employee={filteredData}/>
+      {console.log(filteredData)}
     </Container>
   )
 }

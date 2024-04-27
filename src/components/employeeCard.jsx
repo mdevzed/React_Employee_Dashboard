@@ -11,49 +11,76 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import data from '../data/data';
 
-export default function MediaCard({employee_data}) {
+export default function MediaCard({ employee }) {
   return (
     <>
-    {data.map((item,index) => (
-        <Card sx={{ maxWidth: 365, px: 2, margin:'auto', justifyContent: "center"}}>
-          <Box sx = {{justifyContent: "center", alignItems: "center", margin: 'auto'}}>
+      {data.map((item, index) => (
+        <Card key={index} sx={{ maxWidth: 365, px: 2, margin: '10px' }}>
+          <Box
+            sx={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              margin: 'auto',
+              display: 'flex',
+            }}
+          >
             <CardMedia
-            sx={{ height: 240, width: 240, backgroundSize: 'contain', marginTop: '10px', justifyContent: "center", alignItems: "center" }}
-            image={`/React_Employee_Dashboard/${item.image}`}
-            title={item.firstName + ' ' + item.lastName}
-
+              sx={{
+                height: 240,
+                width: 240,
+                backgroundSize: 'contain',
+                marginTop: '10px',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              image={`/React_Employee_Dashboard/${item.image}`}
+              title={item.firstName + ' ' + item.lastName}
             />
           </Box>
           <CardContent sx={{}}>
             <Face5Icon />
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5">
               {item.firstName} {item.lastName}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {item.department}
             </Typography>
-            <Stack 
-              direction="row" spacing={1} my={1}
-              justifyContent= "center" alignItems= "center"
+            <Stack
+              direction="row"
+              spacing={1}
+              my={1}
               sx={{
-                my: 2, flexWrap: "wrap"
-              }}>
+                my: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+              }}
+            >
               {item.skills.map((skill, skillIndex) => (
-                <Chip key = {skillIndex} label={skill} my={1}
-                  variant="outlined" sx={{my: '2', fontSize: '.75rem'}}/>
+                <Chip
+                  key={skillIndex}
+                  label={skill}
+                  my={1}
+                  variant="outlined"
+                  sx={{ my: '2', fontSize: '.75rem' }}
+                />
               ))}
             </Stack>
             <Stack direction="row" spacing={1} my={1} justifyContent="center">
-              <Chip label={item.onLeave ? "Inactive": "Active"} 
-                variant={item.onLeave ? "" : "outlined"}
-                sx={{fontSize: '.75rem'}}/>
-              <Chip label={`Hours: ${item.hoursLoggedThisWeek}`} 
-                variant="outlined" 
-                sx={{fontSize: '.75rem'}}/>
+              <Chip
+                label={item.onLeave ? 'Inactive' : 'Active'}
+                variant={item.onLeave ? '' : 'outlined'}
+                sx={{ fontSize: '.75rem' }}
+              />
+              <Chip
+                label={`Hours: ${item.hoursLoggedThisWeek}`}
+                variant="outlined"
+                sx={{ fontSize: '.75rem' }}
+              />
             </Stack>
           </CardContent>
         </Card>
-    ))}
-    </>   
+      ))}
+    </>
   );
 }
